@@ -5,7 +5,7 @@ import { TbBrandElectronicArts } from "react-icons/tb";
 
 const Footer = () => {
   return (
-    <Box sx={{bottom:0,position:"",width:"100%"}}>
+    <Box>
       <Box>
         <Box sx={{ backgroundColor: "#bc3232", marginTop: "40px", display: "flex" }}>
           <Box sx={{ height: "350px", width: "480px", display: "flex", justifyContent: "center", alignItems: "center", borderRight: "1px solid #fed700" }}>

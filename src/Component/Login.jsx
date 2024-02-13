@@ -2,8 +2,28 @@ import React from 'react';
 import { Formik, Form, ErrorMessage, useFormik } from 'formik'; // Removed input import
 import * as Yup from 'yup';
 import { Box, Button } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from './FavSlice';
+
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const newLogin = useSelector((state)=>state.fav.login)
+    // console.log(newLogin);
+
+    fetch('https://dummyjson.com/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          
+          email: 'kminchelle@qq.com',
+          password: '0lelplR',
+          // expiresInMins: 60, // optional
+        })
+      })
+      .then(res => res.json())
+      .then(console.log);
+
     const initialValues1 = {
         username:'',
         email:'',
@@ -29,7 +49,7 @@ const Login = () => {
     //     console.log(values);
     // };
     const onSubmit = (values) => {
-        console.log(values);
+        // console.log(values);
     };
 
     const formik = useFormik({
@@ -37,6 +57,7 @@ const Login = () => {
         validationSchema: validationSchema,
         onSubmit:(value1) => {
             console.log("🚀 ~ Login ~ value1:", value1)
+            dispatch(login(value1))
             
         }
     });
@@ -44,7 +65,8 @@ const Login = () => {
         initialValues: initialValues1,
         validationSchema: validationSchema1,
         onSubmit:(value2) => {
-            console.log("🚀 ~ Login ~ value:", value2)
+            console.log("🚀 ~ Login ~ value2:", value2)
+            
         }
     });
 

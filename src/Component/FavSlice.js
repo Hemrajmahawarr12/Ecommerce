@@ -2,24 +2,25 @@ import { Input } from "@mui/material";
 import { createSlice } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 
-
+// console.log("hemraj")
 
 const FavSlice = createSlice({
     name: "fav",
     initialState: {
-        bollyfav: [],
+        login: '',
+        Ragister :'',
     },
     reducers: {
-        bollyfav(state, action) {
-            state.bollyfav = action.payload;
+        login(state, action) {
+            // console.log(action.payload);
+            state.login = action.payload;
            
-        },earAllUser(state, action) {
+        },Ragister(state, action) {
             // console.log(state,action)
-            return [];
         }
     }
 });
 
 
 export default FavSlice.reducer;
-export const {bollyfav} = FavSlice.actions;
+export const {login,Ragister} = FavSlice.actions;

@@ -7,7 +7,8 @@ import { CgLogOut } from "react-icons/cg";
 import { FaUser } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 
-const Nav = () => {
+const Nav = ({search,setSearch,searchproduct}) => {
+  console.log(search);
   const navigate = useNavigate();
   const handleLogin=()=>{
     navigate("/login")
@@ -31,8 +32,8 @@ const Nav = () => {
             <h2 className='my-2 text-[30px]'>𝔼𝕃𝔼ℂ𝕋ℝ𝕆𝕄𝔸ℝ𝕋</h2>
           </div>
           <div className='search-box my-2 flex'>
-            <input type='text' placeholder='Search...' className='w-[300px] pl-[15px] sm:text-[17px] border border-[black] rounded-tl-[15px] rounded-bl-[15px]'></input>
-            <button className='border text-[32px] h-[45px] w-[75px] rounded-tr-[15px] rounded-br-[15px] flex justify-center items-center border-[#bc3232] text-[#bc3232]  hover:bg-[#bc3232]  hover:text-[#fed700]' ><IoMdSearch /></button>
+            <input type='text' value={search} onChange={(e)=>setSearch(e.target.value)} placeholder='Search...' className='w-[300px] pl-[15px] sm:text-[17px] border border-[black] rounded-tl-[15px] rounded-bl-[15px]'></input>
+            <button className='border text-[32px] h-[45px] w-[75px] rounded-tr-[15px] rounded-br-[15px] flex justify-center items-center border-[#bc3232] text-[#bc3232]  hover:bg-[#bc3232]  hover:text-[#fed700]' onClick={searchproduct}><IoMdSearch /></button>
           </div>
           <div className='user flex mr-[50px] mt-3'>
             <div className='login-icon mt-[9px]'>
@@ -61,7 +62,7 @@ const Nav = () => {
             <ul className='flex w-[500px] justify-between text-[18px]'>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/") }}>Home</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/shop") }}>Shop</li>
-              <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/collection") }}>Collection</li>
+              <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/cart") }}>Cart</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/about") }}>About</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/contect") }}>Contect</li>
             </ul>

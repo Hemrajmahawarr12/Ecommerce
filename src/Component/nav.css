@@ -110,8 +110,8 @@ label {
 .form button:hover {
     background-color: #6d44b8;
 }
-body{
+/* body{
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */

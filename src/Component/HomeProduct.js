@@ -53,7 +53,7 @@ const Homeproduct =
         Name: 'Camera',
         price: 'Rs.1,50,0000',
         image:camera,
-        cat: 'camera',
+        cat: 'electronics',
         type: 'featured',
     },
     {
@@ -77,7 +77,7 @@ const Homeproduct =
         Name: 'Led TV',
         price: 'Rs.38,900',
         image: led,
-        cat: 'electronics',
+        cat: 'tv',
         type: 'featured',
     },
     {
@@ -85,7 +85,7 @@ const Homeproduct =
         Name: 'IPad',
         price: 'Rs.1,20,000',
         image: ipad,
-        cat: 'phone',
+        cat: 'laptop',
         type: 'top',
     },
     {
@@ -101,7 +101,7 @@ const Homeproduct =
         Name: 'DigitalClock',
         price: 'Rs.870',
         image: clock,
-        cat: 'speaker',
+        cat: 'watch',
         type: 'top',
     },
     {
@@ -109,7 +109,7 @@ const Homeproduct =
         Name: 'LedSpeaker',
         price: 'Rs.5,000',
         image: mobileSpeaker,
-        cat: 'speaker',
+        cat: 'electronics',
         type: 'top',
     },
     {
@@ -117,7 +117,7 @@ const Homeproduct =
         Name: 'Earbuds',
         price: 'Rs.1,200',
         image: earbuds,
-        cat: 'speaker',
+        cat: 'electronics',
         type: 'new',
     },
     {
@@ -125,7 +125,7 @@ const Homeproduct =
         Name: 'Dell PC',
         price: 'Rs.40,000',
         image: dell,
-        cat: 'speaker',
+        cat: 'tv',
         type: 'featured',
     },
     {
@@ -133,7 +133,7 @@ const Homeproduct =
         Name: 'HP PC',
         price: 'Rs.50,000',
         image: hp,
-        cat: 'speaker',
+        cat: 'laptop',
         type: 'top',
     },
 ]
