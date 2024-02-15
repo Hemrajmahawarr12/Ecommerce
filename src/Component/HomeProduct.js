@@ -1,112 +1,139 @@
-import led from '../images1/p1.webp'
+import Iphone from '../Images/apple.jpeg'
 import laptop from '../images1/p2.webp'
 import watch from '../images1/p3.webp'
 import smallSpe from '../images1/p4.webp'
 import camera from '../images1/p5.webp'
 import mobile from '../images1/p6.webp'
 import alexaSpeaker from '../images1/p7.webp'
-import longSpe from '../images1/p8.webp'
+import led from '../images1/p1.webp'
 import ipad from '../images1/p9.jpg'
 import headPhone from '../images1/p10.jpg'
 import clock from '../images1/p11.jpg'
 import mobileSpeaker from '../images1/p12.png'
+import earbuds from '../Images/earbuds1.jpg'
+import dell from '../Images/dell.jpg'
+import hp from '../Images/HP.jpg'
 
 const Homeproduct =
 [
     {
         id: 1,
-        Name: 'product1',
-        price: '26',
-        image: led,
-        cat: 'tv',
+        Name: 'IPhone 15',
+        price: 'Rs.1,10,000',
+        image: Iphone,
+        cat: 'mobile',
         type: 'new',
     },
     {
         id: 2,
-        Name: 'product2',
-        price: '96',
+        Name: 'Laptop',
+        price: 'Rs.96,000',
         image: laptop,
         cat: 'laptop',
         type: 'new',
     },
     {
         id: 3,
-        Name: 'product3',
-        price: '236',
+        Name: 'SmartWatch',
+        price: 'Rs.299',
         image: watch,
         cat: 'watch',
         type: 'new',
     },
     {
         id: 4,
-        Name: 'product4',
-        price: '636',
+        Name: 'Speaker',
+        price: 'Rs.1,500',
         image: smallSpe,
-        cat: 'laptop',
+        cat: 'speaker',
         type: 'new',
     },
     {
         id: 5,
-        Name: 'product5',
-        price: '98',
+        Name: 'Camera',
+        price: 'Rs.1,50,0000',
         image:camera,
-        cat: 'speaker',
-        type: 'featured',
-    },
-    {
-        id: 6,
-        Name: 'product6',
-        price: '59',
-        image: mobile,
         cat: 'electronics',
         type: 'featured',
     },
     {
+        id: 6,
+        Name: 'Mobile',
+        price: 'Rs.20,000',
+        image: mobile,
+        cat: 'mobile',
+        type: 'featured',
+    },
+    {
         id: 7,
-        Name: 'product7',
-        price: '956',
+        Name: 'AlexaSpeaker',
+        price: 'Rs.6,000',
         image: alexaSpeaker,
         cat: 'headphone',
         type: 'featured',
     },
     {
         id: 8,
-        Name: 'product8',
-        price: '389',
-        image: longSpe,
-        cat: 'electronics',
+        Name: 'Led TV',
+        price: 'Rs.38,900',
+        image: led,
+        cat: 'tv',
         type: 'featured',
     },
     {
         id: 9,
-        Name: 'product9',
-        price: '67',
+        Name: 'IPad',
+        price: 'Rs.1,20,000',
         image: ipad,
-        cat: 'phone',
+        cat: 'laptop',
         type: 'top',
     },
     {
         id: 10,
-        Name: 'product10',
-        price: '76',
+        Name: 'HeadPhone',
+        price: 'Rs.7,600',
         image: headPhone,
         cat: 'speaker',
         type: 'top',
     },
     {
         id: 11,
-        Name: 'product11',
-        price: '87',
+        Name: 'DigitalClock',
+        price: 'Rs.870',
         image: clock,
-        cat: 'speaker',
+        cat: 'watch',
         type: 'top',
     },
     {
         id: 12,
-        Name: 'product12',
-        price: '807',
+        Name: 'LedSpeaker',
+        price: 'Rs.5,000',
         image: mobileSpeaker,
-        cat: 'speaker',
+        cat: 'electronics',
+        type: 'top',
+    },
+    {
+        id: 13,
+        Name: 'Earbuds',
+        price: 'Rs.1,200',
+        image: earbuds,
+        cat: 'electronics',
+        type: 'new',
+    },
+    {
+        id: 14,
+        Name: 'Dell PC',
+        price: 'Rs.40,000',
+        image: dell,
+        cat: 'tv',
+        type: 'featured',
+    },
+    {
+        id: 15,
+        Name: 'HP PC',
+        price: 'Rs.50,000',
+        image: hp,
+        cat: 'laptop',
         type: 'top',
     },
 ]

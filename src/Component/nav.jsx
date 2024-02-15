@@ -6,15 +6,17 @@ import { FiLogIn } from "react-icons/fi";
 import { CgLogOut } from "react-icons/cg";
 import { FaUser } from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Container, Typography } from '@mui/material';
-import './nav.css';
 
-const Nav = () => {
+const Nav = ({search,setSearch,searchproduct}) => {
+  console.log(search);
   const navigate = useNavigate();
+  const handleLogin=()=>{
+    navigate("/login")
+  }
 
   return (
     <>
-      <div className=' w-[100%]'>
+      <div className=' w-[100%]'> 
         <div className=' top-hearder px-20 p-[5px] flex bg-[#d6f0fa]'>
           <div className='my-1 color-[#87CEFA]'>
             <MdOutlineLocalShipping />
@@ -27,18 +29,18 @@ const Nav = () => {
         <div className='mid-header flex justify-between'>
           <div className='logo flex ml-[10px]  '>
             <TbBrandElectronicArts className='text-[60px] ' />
-            <h2 className='my-2 text-[30px]'>ElectroMart</h2>
+            <h2 className='my-2 text-[30px]'>𝔼𝕃𝔼ℂ𝕋ℝ𝕆𝕄𝔸ℝ𝕋</h2>
           </div>
           <div className='search-box my-2 flex'>
-            <input type='text' placeholder='Search...' className='w-[300px] pl-[15px] sm:text-[17px] border border-[black] rounded-tl-[15px] rounded-bl-[15px]'></input>
-            <button className='border text-[32px] h-[45px] w-[75px] rounded-tr-[15px] rounded-br-[15px] flex justify-center items-center border-[#bc3232] text-[#bc3232]  hover:bg-[#bc3232]  hover:text-[#fed700]' ><IoMdSearch /></button>
+            <input type='text' value={search} onChange={(e)=>setSearch(e.target.value)} placeholder='Search...' className='w-[300px] pl-[15px] sm:text-[17px] border border-[black] rounded-tl-[15px] rounded-bl-[15px]'></input>
+            <button className='border text-[32px] h-[45px] w-[75px] rounded-tr-[15px] rounded-br-[15px] flex justify-center items-center border-[#bc3232] text-[#bc3232]  hover:bg-[#bc3232]  hover:text-[#fed700]' onClick={searchproduct}><IoMdSearch /></button>
           </div>
           <div className='user flex mr-[50px] mt-3'>
             <div className='login-icon mt-[9px]'>
               <FiLogIn />
             </div>
             <div className='btn '>
-              <button className='bg-[#bc3232] text-[#ffffff] rounded-md w-[60px] h-[35px]'>Login</button>
+              <button className='bg-[#bc3232] text-[#ffffff] rounded-md w-[60px] h-[35px]' onClick={()=>handleLogin()}>Login</button>
             </div>
           </div>
           <div className='user flex mr-[50px] mt-3'>
@@ -60,7 +62,7 @@ const Nav = () => {
             <ul className='flex w-[500px] justify-between text-[18px]'>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/") }}>Home</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/shop") }}>Shop</li>
-              <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/collection") }}>Collection</li>
+              <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/cart") }}>Cart</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/about") }}>About</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/contect") }}>Contect</li>
             </ul>
