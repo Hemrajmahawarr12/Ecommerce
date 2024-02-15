@@ -7,20 +7,29 @@ import { useEffect } from "react";
 const FavSlice = createSlice({
     name: "fav",
     initialState: {
-        login: '',
-        Ragister :'',
+        cart: [],
     },
     reducers: {
-        login(state, action) {
-            // console.log(action.payload);
-            state.login = action.payload;
-           
-        },Ragister(state, action) {
-            // console.log(state,action)
+        cart(state, action) {
+            console.log(state.cart);    
+            state.cart = action.payload;
+
+        },
+        increaseQty(state, action) {
+            const { product, cartData } = action.payload;
+            const updatedQty = { ...product, qty: product.qty += 1 };
+            const newArray = cartData.map((item) => {
+                if(item.id === updatedQty.id){
+                    return updatedQty 
+                }else{
+                    return item 
+                }
+            });
         }
+        
     }
 });
 
 
 export default FavSlice.reducer;
-export const {login,Ragister} = FavSlice.actions;
+export const { cart, increaseQty } = FavSlice.actions;

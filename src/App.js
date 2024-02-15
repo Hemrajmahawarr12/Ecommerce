@@ -6,15 +6,18 @@ import './Component/nav.css';
 import Footer from './Component/footer';
 import { useState } from 'react';
 import Homeproduct from './Component/HomeProduct';
+import { useDispatch, useSelector } from 'react-redux';
+import { cart } from './Component/FavSlice';
 
 
 function App() {
+  const dispatch = useDispatch();
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
   const [search,setSearch] = useState('')
   const [trendingProduct, setTrendingProduct] = useState(Homeproduct);
-  console.log(trendingProduct);
-  const [cart,setCart] = useState([]);
+  const cartData = useSelector((state) => state.fav.cart);
+  console.log("cartData", cartData)
 
   const Filter=(x)=>{
     const filterShop = Homeproduct.filter((home)=>{
@@ -32,8 +35,6 @@ function App() {
     alert("please enter for search")
     setTrendingProduct(Homeproduct)
   }else{
-    
-      console.log("hemraj");
       const searchFilter = Homeproduct.filter((x)=>{
         return x.cat === search
       })
@@ -41,24 +42,24 @@ function App() {
       setSearch('')
     }
   }
-   
-  
-
-  const addtocart = (product)=>{
-    const exist = cart.find((x)=>{
-      return x.id === product.id
-    }) 
-    if(exist){
-      alert('This product is already added')
-    }else{
-
-      setCart([...cart,product])
-      alert('added to cart')
+ const addtocart = (product)=>{
+    let exist = 0 ;
+      if(cartData?.length > 0){
+        exist = cartData.find((x)=>{
+           return x.id === product.id
+         });
+       }
+     if(exist){
+         alert('This product is already added')
+       }else{
+         const updatedData = [...cartData , {...product, qty:1}];
+         console.log("updatedData", updatedData)
+         dispatch(cart(updatedData));
+         alert('This product is Added to cart');
+       
     }
-  }
-  console.log(cart);
-  
-
+    
+  }  
   return (
       <div className="App">
         {!isLoginPage && <Nav search={search} setSearch={setSearch} searchproduct={searchproduct}/>}

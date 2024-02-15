@@ -64,7 +64,7 @@ const Nav = ({search,setSearch,searchproduct}) => {
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/shop") }}>Shop</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/cart") }}>Cart</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/about") }}>About</li>
-              <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/contect") }}>Contect</li>
+              <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/contect") }}>Contact</li>
             </ul>
           </div>
           <div >

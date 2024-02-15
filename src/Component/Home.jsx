@@ -15,19 +15,30 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagramSquare } from "react-icons/fa";
 import { FaYoutube } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
+import ProductView from "./ProductView";
 
 
-const Home = () => {
+const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
   const navigate = useNavigate();
   const [newProduct, setNewProduct] = useState([])
   const [featuredProduct, setFeaturdProduct] = useState([])
   const [topProduct, setTopProduct] = useState([])
   const [trendinProduct, setTrendingProduct] = useState(Homeproduct);
+  const [productDetails, setProductDetails] = useState(false);
+  const [detail, setDetail] = useState([]);
+
   const handleTopItem = (x) => {
     const filterProduct = Homeproduct.filter((filterItem) => {
       return filterItem.type === x;
     })
     setTrendingProduct(filterProduct)
+  }
+  const handleEye = (product) => {
+    setDetail(product)
+    setProductDetails(true)
+  }
+  const closeDetail = () => {
+    setProductDetails(false)
   }
   const allTrending = () => {
     setTrendingProduct(Homeproduct)
@@ -156,7 +167,7 @@ const Home = () => {
                           display: "none" // Initially hide icon box
                         }}
                       > 
-                          <Box sx={{padding: "6px" }}>
+                          <Box sx={{padding: "6px" }} onClick={() => {handleEye(item)}}>
                             <FaEye style={{cursor:"pointer"}} />
                           </Box>
                           <Box sx={{padding: "6px" }}>
@@ -171,7 +182,7 @@ const Home = () => {
                       >
                         <Box sx={{ marginRight: "100px" }}>
                           <Typography variant="h5">{item.Name}</Typography>
-                          <Typography>{item.price}</Typography>
+                          <Typography>Rs.{item.price}</Typography>
                           <Button
                             variant="outlined"
                             sx={{
@@ -183,6 +194,7 @@ const Home = () => {
                               height: "35px",
                               width: "140px"
                             }}
+                            onClick={()=>addtocart(item)}
                           >
                             Add To Cart
                           </Button>
@@ -274,12 +286,12 @@ const Home = () => {
                             <Box>
                               <Box>
                                 <Typography variant="h6">{item.Name}</Typography>
-                                <Typography variant="h7" sx={{ color: "#bc3232" }}>{item.price}</Typography>
+                                <Typography variant="h7" sx={{ color: "#bc3232" }}>Rs.{item.price}</Typography>
                               </Box>
                               <Box sx={{ marginTop: "20px" }}>
-                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }}><FaEye /></Button>
+                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }} onClick={() => {handleEye(item)}}><FaEye /></Button>
                                 <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" } }}><FavoriteIcon sx={{ color: "grey" }} /></Button>
-                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }}><FaShoppingCart /></Button>
+                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }} onClick={()=>addtocart(item)}><FaShoppingCart /></Button>
                               </Box>
                             </Box>
                           </Box>
@@ -308,12 +320,12 @@ const Home = () => {
                             <Box>
                               <Box>
                                 <Typography variant="h6">{item.Name}</Typography>
-                                <Typography variant="h7" sx={{ color: "#bc3232" }}>{item.price}</Typography>
+                                <Typography variant="h7" sx={{ color: "#bc3232" }}>Rs.{item.price}</Typography>
                               </Box>
                               <Box sx={{ marginTop: "20px" }}>
-                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }}><FaEye /></Button>
+                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }} onClick={() => {handleEye(item)}}><FaEye /></Button>
                                 <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" } }}><FavoriteIcon sx={{ color: "grey" }} /></Button>
-                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }}><FaShoppingCart /></Button>
+                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }} onClick={()=>addtocart(item)}><FaShoppingCart /></Button>
                               </Box>
                             </Box>
                           </Box>
@@ -342,12 +354,12 @@ const Home = () => {
                             <Box>
                               <Box>
                                 <Typography variant="h6">{item.Name}</Typography>
-                                <Typography variant="h7" sx={{ color: "#bc3232" }}>{item.price}</Typography>
+                                <Typography variant="h7" sx={{ color: "#bc3232" }}>Rs.{item.price}</Typography>
                               </Box>
                               <Box sx={{ marginTop: "20px" }}>
-                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }}><FaEye /></Button>
+                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }} onClick={() => {handleEye(item)}}><FaEye /></Button>
                                 <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" } }}><FavoriteIcon sx={{ color: "grey" }} /></Button>
-                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }}><FaShoppingCart /></Button>
+                                <Button sx={{ "&:hover": { backgroundColor: "#d6f0fa" }, height: "37px", boxShadow: "" }} onClick={()=>addtocart(item)}><FaShoppingCart /></Button>
                               </Box>
                             </Box>
                           </Box>
@@ -364,6 +376,10 @@ const Home = () => {
 
 
       </div>
+      { productDetails && (
+        <ProductView detail = {detail} closeDetail={closeDetail} addtocart={addtocart} />
+      )
+      }
     </>
   );
 };

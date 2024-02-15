@@ -1,10 +1,11 @@
-import { Box, Stack, Typography } from '@mui/material'
+import { BottomNavigation, Box, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { FaPiggyBank, FaShippingFast, FaHeadphonesAlt, FaWallet } from 'react-icons/fa';
 import { TbBrandElectronicArts } from "react-icons/tb";
 
 const Footer = () => {
   return (
+    
     <Box>
       <Box>
         <Box sx={{ backgroundColor: "#bc3232", marginTop: "40px", display: "flex" }}>
@@ -87,6 +88,7 @@ const Footer = () => {
 
       </Box>
     </Box>
+ 
   )
 }
 

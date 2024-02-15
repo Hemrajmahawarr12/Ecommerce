@@ -19,7 +19,7 @@ const Homeproduct =
     {
         id: 1,
         Name: 'IPhone 15',
-        price: 'Rs.1,10,000',
+        price: '1,10,000',
         image: Iphone,
         cat: 'mobile',
         type: 'new',
@@ -27,7 +27,7 @@ const Homeproduct =
     {
         id: 2,
         Name: 'Laptop',
-        price: 'Rs.96,000',
+        price: '96,000',
         image: laptop,
         cat: 'laptop',
         type: 'new',
@@ -35,7 +35,7 @@ const Homeproduct =
     {
         id: 3,
         Name: 'SmartWatch',
-        price: 'Rs.299',
+        price: '299',
         image: watch,
         cat: 'watch',
         type: 'new',
@@ -43,7 +43,7 @@ const Homeproduct =
     {
         id: 4,
         Name: 'Speaker',
-        price: 'Rs.1,500',
+        price: '1,500',
         image: smallSpe,
         cat: 'speaker',
         type: 'new',
@@ -51,7 +51,7 @@ const Homeproduct =
     {
         id: 5,
         Name: 'Camera',
-        price: 'Rs.1,50,0000',
+        price: '1,50,000',
         image:camera,
         cat: 'electronics',
         type: 'featured',
@@ -59,7 +59,7 @@ const Homeproduct =
     {
         id: 6,
         Name: 'Mobile',
-        price: 'Rs.20,000',
+        price: '20,000',
         image: mobile,
         cat: 'mobile',
         type: 'featured',
@@ -67,7 +67,7 @@ const Homeproduct =
     {
         id: 7,
         Name: 'AlexaSpeaker',
-        price: 'Rs.6,000',
+        price: '6,000',
         image: alexaSpeaker,
         cat: 'headphone',
         type: 'featured',
@@ -75,7 +75,7 @@ const Homeproduct =
     {
         id: 8,
         Name: 'Led TV',
-        price: 'Rs.38,900',
+        price: '38,900',
         image: led,
         cat: 'tv',
         type: 'featured',
@@ -83,7 +83,7 @@ const Homeproduct =
     {
         id: 9,
         Name: 'IPad',
-        price: 'Rs.1,20,000',
+        price: '1,20,000',
         image: ipad,
         cat: 'laptop',
         type: 'top',
@@ -91,7 +91,7 @@ const Homeproduct =
     {
         id: 10,
         Name: 'HeadPhone',
-        price: 'Rs.7,600',
+        price: '7,600',
         image: headPhone,
         cat: 'speaker',
         type: 'top',
@@ -99,7 +99,7 @@ const Homeproduct =
     {
         id: 11,
         Name: 'DigitalClock',
-        price: 'Rs.870',
+        price: '870',
         image: clock,
         cat: 'watch',
         type: 'top',
@@ -107,7 +107,7 @@ const Homeproduct =
     {
         id: 12,
         Name: 'LedSpeaker',
-        price: 'Rs.5,000',
+        price: '5,000',
         image: mobileSpeaker,
         cat: 'electronics',
         type: 'top',
@@ -115,7 +115,7 @@ const Homeproduct =
     {
         id: 13,
         Name: 'Earbuds',
-        price: 'Rs.1,200',
+        price: '1,200',
         image: earbuds,
         cat: 'electronics',
         type: 'new',
@@ -123,7 +123,7 @@ const Homeproduct =
     {
         id: 14,
         Name: 'Dell PC',
-        price: 'Rs.40,000',
+        price: '40,000',
         image: dell,
         cat: 'tv',
         type: 'featured',
@@ -131,7 +131,7 @@ const Homeproduct =
     {
         id: 15,
         Name: 'HP PC',
-        price: 'Rs.50,000',
+        price: '50,000',
         image: hp,
         cat: 'laptop',
         type: 'top',
