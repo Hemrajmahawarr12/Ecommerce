@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Nav from './Component/nav';
 import Routs from './Component/routs';
 import './Component/nav.css';
@@ -11,6 +11,7 @@ import { cart } from './Component/FavSlice';
 
 
 function App() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
@@ -37,7 +38,9 @@ function App() {
   }else{
       const searchFilter = Homeproduct.filter((x)=>{
         return x.cat === search
+        
       })
+      navigate('/shop')
       setTrendingProduct(searchFilter)
       setSearch('')
     }

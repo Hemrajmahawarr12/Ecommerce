@@ -8,8 +8,15 @@ const FavSlice = createSlice({
     name: "fav",
     initialState: {
         cart: [],
+        ragister:[]
     },
     reducers: {
+        logindata(state, action) {  
+            console.log(action.payload);
+            state.ragister=action.payload
+            sessionStorage.setItem('HemrajMahawar', JSON.stringify(action.payload))
+            
+        },
         cart(state, action) {
             console.log(state.cart);    
             state.cart = action.payload;
@@ -32,4 +39,4 @@ const FavSlice = createSlice({
 
 
 export default FavSlice.reducer;
-export const { cart, increaseQty } = FavSlice.actions;
+export const { cart, increaseQty,logindata} = FavSlice.actions;

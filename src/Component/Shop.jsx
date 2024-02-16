@@ -111,12 +111,12 @@ const Shop = ({ trendingProduct, Filter, handleAll, addtocart }) => {
                               height: "350px",
                               width: "250px",
                               margin: "7px",
-                              position: "relative" // Ensure position context for absolute positioning
+                              position: "relative" 
                             }}
                           >
                             <img
                               src={item.image}
-                              alt={item.id} // Use item.id instead of a string
+                              alt={item.id} 
                               style={{ height: "250px", background: "none" }}
                             />
                             <Box
@@ -127,7 +127,7 @@ const Shop = ({ trendingProduct, Filter, handleAll, addtocart }) => {
                                 position: "absolute",
                                 top: "0",
                                 right: "0",
-                                display: "none" // Initially hide icon box
+                                display: "none" 
                               }}
                             >
                               <Box sx={{ padding: "6px" }} onClick={() => handleEye(item)}>

@@ -3,26 +3,19 @@ import { Formik, Form, ErrorMessage, useFormik } from 'formik'; // Removed input
 import * as Yup from 'yup';
 import { Box, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-// import { login } from './FavSlice';
+import { logindata } from './FavSlice';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const newLogin = useSelector((state)=>state.fav.login)
-  // console.log(newLogin);
+  const newragister = useSelector((state)=>state.fav.ragister)
+  
+  
 
-  fetch('https://dummyjson.com/auth/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-
-      email: 'kminchelle@qq.com',
-      password: '0lelplR',
-      // expiresInMins: 60, // optional
-    })
-  })
-    .then(res => res.json())
-    .then(console.log);
+  
 
   const initialValues1 = {
     username: '',
@@ -39,6 +32,16 @@ const Login = () => {
     password: ''
   }
 
+  const generateToken = () => {
+    let data = new Date().toISOString();
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    const combinedString = data + 'hemrajMahawar'+ randomIndex;
+    console.log("data", combinedString );
+    return combinedString;
+  }
+
 
   const validationSchema = Yup.object({
     email: Yup.string().email('Invalid email').required('Email is required'),
@@ -47,17 +50,17 @@ const Login = () => {
 
   // const onSubmit1 = (values) => {
   //     console.log(values);
-  // };
-  const onSubmit = (values) => {
-    // console.log(values);
-  };
-
+  //
+   let updated;
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: (value1) => {
       console.log("🚀 ~ Login ~ value1:", value1)
-      // dispatch(login(value1))
+      const jwt = generateToken();
+      updated = {...value1, jwtToken: jwt }
+      dispatch(logindata(updated))
+      navigate("/")
 
     }
   });
@@ -65,12 +68,17 @@ const Login = () => {
     initialValues: initialValues1,
     validationSchema: validationSchema1,
     onSubmit: (value2) => {
-      console.log("🚀 ~ Login ~ value2:", value2)
-
     }
   });
+  console.log(updated);
+  const handleLogin =()=>{
+     if(updated){
+      navigate('/about')
+     }
+  }
 
   return (
+    <>
     <Formik>
       <Box className="container">
         <Box className="main">
@@ -108,7 +116,7 @@ const Login = () => {
               {formik.errors.password && formik.touched.password && (
                 <p style={{ color: "red" }}>{formik.errors.password}</p>
               )}
-              <Button type="submit">Log in</Button>
+              <Button type="submit" onClick={handleLogin}>Log in</Button>
             </Form>
           </Box>
           <Box className="register">
@@ -132,6 +140,8 @@ const Login = () => {
         </Box>
       </Box>
     </Formik>
+    </>
+
   )
 }
 
