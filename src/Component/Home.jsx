@@ -18,7 +18,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import ProductView from "./ProductView";
 
 
-const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
+const Home = ({trendingProduct,Filter,handleAll,addtocart,handleFav, isFavorite}) => {
   const navigate = useNavigate();
   const [newProduct, setNewProduct] = useState([])
   const [featuredProduct, setFeaturdProduct] = useState([])
@@ -51,7 +51,6 @@ const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
       return x.type === 'new'
     })
     setNewProduct(newcategory)
-    console.log(newProduct)
     const featuredcategory = Homeproduct.filter((x) => {
       return x.type === 'featured'
     })
@@ -129,8 +128,6 @@ const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
           <Box sx={{ width: "100%", display: "flex", flexWrap: "wrap", justifyContent: "center", marginTop: "20px" }}>
             {
               trendinProduct.map((item, id) => (
-                <Box>
-
                   <Box
                     sx={{
                       display: "flex",
@@ -140,6 +137,7 @@ const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
                        display:"flex",flexDirection:"column",alignItems:"center",
                       }
                     }}
+                    key={id}
                   >
                     <Box
                       sx={{
@@ -148,12 +146,12 @@ const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
                         height: "350px",
                         width: "250px",
                         margin: "7px",
-                        position: "relative" // Ensure position context for absolute positioning
+                        position: "relative"
                       }}
                     >
                       <img
                         src={item.image}
-                        alt={item.id} // Use item.id instead of a string
+                        alt={item.id} 
                         style={{ height: "250px", background: "none" }}
                       />
                       <Box
@@ -164,14 +162,14 @@ const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
                           position: "absolute",
                           top: "0",
                           right: "0",
-                          display: "none" // Initially hide icon box
+                          display: "none" 
                         }}
                       > 
                           <Box sx={{padding: "6px" }} onClick={() => {handleEye(item)}}>
                             <FaEye style={{cursor:"pointer"}} />
                           </Box>
                           <Box sx={{padding: "6px" }}>
-                            <FavoriteIcon style={{ cursor:"pointer",color: "grey" }} />
+                            <FavoriteIcon style={{ cursor:"pointer",color: isFavorite(item) ? 'red' : 'grey' }}  onClick={ ()=> handleFav(item)} />
                           </Box>
                         </Box>
                       <Box
@@ -202,7 +200,6 @@ const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
                       </Box>
                     </Box>
                   </Box>
-                </Box>
               ))
             }
           </Box>
@@ -277,7 +274,6 @@ const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
                 {
                   newProduct.map((item, id) => {
                     return (
-                      <>
                         <Box key={id}>
                           <Box sx={{ display: "flex", marginTop: "15px" }}>
                             <Box sx={{ width: "150px" }}>
@@ -297,7 +293,6 @@ const Home = ({trendingProduct,Filter,handleAll,addtocart}) => {
                           </Box>
                           <hr />
                         </Box>
-                      </>
                     )
                   })
                 }

@@ -5,10 +5,9 @@ import { IoMdSearch } from "react-icons/io";
 import { FiLogIn } from "react-icons/fi";
 import { CgLogOut } from "react-icons/cg";
 import { FaUser } from "react-icons/fa6";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';   
 
 const Nav = ({search,setSearch,searchproduct}) => {
-  console.log(search);
   const navigate = useNavigate();
   const handleLogin=()=>{
     navigate("/login")

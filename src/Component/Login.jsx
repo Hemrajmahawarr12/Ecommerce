@@ -38,7 +38,6 @@ const Login = () => {
     let result = '';
     const randomIndex = Math.floor(Math.random() * characters.length);
     const combinedString = data + 'hemrajMahawar'+ randomIndex;
-    console.log("data", combinedString );
     return combinedString;
   }
 
@@ -48,15 +47,11 @@ const Login = () => {
     password: Yup.string().required('Password is required')
   });
 
-  // const onSubmit1 = (values) => {
-  //     console.log(values);
-  //
    let updated;
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: validationSchema,
     onSubmit: (value1) => {
-      console.log("🚀 ~ Login ~ value1:", value1)
       const jwt = generateToken();
       updated = {...value1, jwtToken: jwt }
       dispatch(logindata(updated))

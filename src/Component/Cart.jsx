@@ -12,9 +12,9 @@ const Cart = () => {
   const navigate = useNavigate();
   const cartData = useSelector((state) => state.fav.cart);
 
-  const handleShop=()=>{
+  const handleShop = () => {
     navigate("/shop")
-    
+
   }
 
   const incqty = (product) => {
@@ -30,22 +30,23 @@ const Cart = () => {
   }
 
   const decQty = (product) => {
-    if(product.qty > 1){
-    const updatedQty = { ...product, qty: product.qty - 1 };
-    const newArray = cartData.map((item) => {
-      if (item.id === updatedQty.id) {
-        return updatedQty 
-      } else {
-        return item
-      }
-    })
-    dispatch(cart(newArray));
-  }else{
-    var updateRemove = cartData.filter((item) => {
-      return item.id !== product.id
-    })
-    dispatch(cart(updateRemove))
-  }}
+    if (product.qty > 1) {
+      const updatedQty = { ...product, qty: product.qty - 1 };
+      const newArray = cartData.map((item) => {
+        if (item.id === updatedQty.id) {
+          return updatedQty
+        } else {
+          return item
+        }
+      })
+      dispatch(cart(newArray));
+    } else {
+      var updateRemove = cartData.filter((item) => {
+        return item.id !== product.id
+      })
+      dispatch(cart(updateRemove))
+    }
+  }
 
   const handleDelete = (product) => {
     const exist = cartData.find((x) => {
@@ -55,16 +56,15 @@ const Cart = () => {
       var updateRemove = cartData.filter((item) => {
         return item.id !== product.id
       })
-      console.log(updateRemove);
       dispatch(cart(updateRemove))
     }
   }
-  
-  
+
+
 
   const calculatetotalAmount = (price, qty) => {
-    const numberWithoutCommas = price.replace(/,/g, ''); 
-    const integerValue = parseInt(numberWithoutCommas); 
+    const numberWithoutCommas = price.replace(/,/g, '');
+    const integerValue = parseInt(numberWithoutCommas);
     return integerValue * qty;
   }
 
@@ -76,7 +76,7 @@ const Cart = () => {
           <Box sx={{ display: "flex", height: "60px", alignItems: "center" }}><Typography variant='h4' sx={{ marginLeft: "25px", fontWeight: "550" }}>#CART</Typography></Box>
           <Box>
             {
-               cartData?.length == 0 ?
+              cartData?.length == 0 ?
                 (
                   <>
                     <Box className='empty_cart' sx={{ marginBottom: "85px" }}>
@@ -112,7 +112,7 @@ const Cart = () => {
                                         <input value={item.qty} style={{ width: "50px", height: "25px" }}></input>
                                       </Box>
                                       <Button
-                                      onClick={() => decQty (item)}
+                                        onClick={() => decQty(item)}
                                       >-</Button>
                                     </Box>
                                   </Box>
@@ -128,7 +128,6 @@ const Cart = () => {
                   </div>
                 )
             }
-
           </Box>
         </Box>
       </Box>

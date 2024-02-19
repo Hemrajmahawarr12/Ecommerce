@@ -9,7 +9,7 @@ import Login from './Login'
 import SignUpdata from './signUpdata'
 import AuthGuard from './AuthGuard'
 
-const Routs = ({ trendingProduct, Filter, handleAll, addtocart, cart }) => {
+const Routs = ({ trendingProduct, Filter, handleAll, addtocart, cart,handleFav,isFavorite }) => {
   return (
     <div>
       <Routes>
@@ -20,11 +20,11 @@ const Routs = ({ trendingProduct, Filter, handleAll, addtocart, cart }) => {
         {/* <Home trendingProduct={trendingProduct} Filter ={Filter} handleAll={handleAll} addtocart={addtocart}/> */}
 
         <Route path='/' element={<AuthGuard >
-          <Home trendingProduct={trendingProduct} Filter={Filter} handleAll={handleAll} addtocart={addtocart} />
+          <Home trendingProduct={trendingProduct} Filter={Filter} handleAll={handleAll} addtocart={addtocart} handleFav={handleFav} isFavorite={isFavorite}/>
         </AuthGuard>}></Route>
         <Route path='/shop' element={
           <AuthGuard>
-            <Shop trendingProduct={trendingProduct} Filter={Filter} handleAll={handleAll} addtocart={addtocart} />
+            <Shop trendingProduct={trendingProduct} Filter={Filter} handleAll={handleAll} addtocart={addtocart} handleFav={handleFav}  isFavorite={isFavorite}/>
           </AuthGuard>
         }></Route>
         <Route path='/cart' element={

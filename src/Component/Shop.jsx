@@ -7,7 +7,7 @@ import { FaEye } from "react-icons/fa";
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import ProductView from './ProductView'
 
-const Shop = ({ trendingProduct, Filter, handleAll, addtocart }) => {
+const Shop = ({ trendingProduct, Filter, handleAll, addtocart, handleFav, isFavorite}) => {
   const [showdetail, setShowDetail] = useState(false)
   const [detail, setDetail] = useState([]);
   const handleEye = (product) => {
@@ -18,7 +18,6 @@ const Shop = ({ trendingProduct, Filter, handleAll, addtocart }) => {
   const closeDetail = () => {
     setShowDetail(false)
   }
-  console.log(detail);
   return (
     <>
       <div>
@@ -94,7 +93,7 @@ const Shop = ({ trendingProduct, Filter, handleAll, addtocart }) => {
                     trendingProduct.map((item, id) => (
                       <Box>
 
-                        <Box
+                        <Box key={id}
                           sx={{
                             display: "flex",
                             justifyContent: "center",
@@ -134,7 +133,7 @@ const Shop = ({ trendingProduct, Filter, handleAll, addtocart }) => {
                                 <FaEye style={{ cursor: "pointer" }} />
                               </Box>
                               <Box sx={{ padding: "6px" }}>
-                                <FavoriteIcon style={{ cursor: "pointer", color: "grey" }} />
+                              <FavoriteIcon style={{ cursor: "pointer", color: isFavorite(item) ? 'red' : 'grey' }}  onClick={ ()=> handleFav(item)} />
                               </Box>
                             </Box>
                             <Box
