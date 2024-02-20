@@ -6,20 +6,36 @@ import Cart from './Cart'
 import About from './About'
 import Contect from './Contect'
 import Login from './Login'
+import SignUpdata from './signUpdata'
+import AuthGuard from './AuthGuard'
 
-const Routs = ({trendingProduct,Filter,handleAll,addtocart}) => {
-  console.log("Filter",Filter);
+const Routs = ({ trendingProduct, Filter, handleAll, addtocart, cart,handleFav,isFavorite }) => {
   return (
     <div>
-       <Routes>
-         <Route path='/' element={<Home />}></Route>
-         <Route path='/login' element={<Login />}></Route>
-         <Route path='/shop' element={<Shop trendingProduct={trendingProduct} Filter ={Filter} handleAll={handleAll} addtocart={addtocart}/>}></Route>
-         <Route path='/cart' element={<Cart addtocart={addtocart}/>}></Route>
-         <Route path='/about' element={<About />}></Route>
-         <Route path='/contect' element={<Contect />}></Route>
-       </Routes>
-   </div>
+      <Routes>
+        <Route path='/login' element={
+            <Login />
+        }>
+        </Route>
+        {/* <Home trendingProduct={trendingProduct} Filter ={Filter} handleAll={handleAll} addtocart={addtocart}/> */}
+
+        <Route path='/' element={<AuthGuard >
+          <Home trendingProduct={trendingProduct} Filter={Filter} handleAll={handleAll} addtocart={addtocart} handleFav={handleFav} isFavorite={isFavorite}/>
+        </AuthGuard>}></Route>
+        <Route path='/shop' element={
+          <AuthGuard>
+            <Shop trendingProduct={trendingProduct} Filter={Filter} handleAll={handleAll} addtocart={addtocart} handleFav={handleFav}  isFavorite={isFavorite}/>
+          </AuthGuard>
+        }></Route>
+        <Route path='/cart' element={
+          <AuthGuard>
+            <Cart />
+          </AuthGuard>
+        }></Route>
+        <Route path='/about' element={<About />}></Route>
+        <Route path='/contect' element={<Contect />}></Route>
+      </Routes>
+    </div>
   )
 }
 

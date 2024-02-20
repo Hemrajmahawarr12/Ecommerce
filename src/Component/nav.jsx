@@ -5,14 +5,19 @@ import { IoMdSearch } from "react-icons/io";
 import { FiLogIn } from "react-icons/fi";
 import { CgLogOut } from "react-icons/cg";
 import { FaUser } from "react-icons/fa6";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';   
 
 const Nav = ({search,setSearch,searchproduct}) => {
-  console.log(search);
   const navigate = useNavigate();
   const handleLogin=()=>{
     navigate("/login")
   }
+  const handleLogOut=()=>{
+    sessionStorage.removeItem('HemrajMahawar')
+    navigate("/login")
+  }
+  const isAuthenticated = JSON.parse(sessionStorage.getItem('HemrajMahawar'))
+  
 
   return (
     <>
@@ -31,32 +36,36 @@ const Nav = ({search,setSearch,searchproduct}) => {
             <TbBrandElectronicArts className='text-[60px] ' />
             <h2 className='my-2 text-[30px]'>𝔼𝕃𝔼ℂ𝕋ℝ𝕆𝕄𝔸ℝ𝕋</h2>
           </div>
-          <div className='search-box my-2 flex'>
+          <div className='search-box my-2 flex mr-40'>
             <input type='text' value={search} onChange={(e)=>setSearch(e.target.value)} placeholder='Search...' className='w-[300px] pl-[15px] sm:text-[17px] border border-[black] rounded-tl-[15px] rounded-bl-[15px]'></input>
             <button className='border text-[32px] h-[45px] w-[75px] rounded-tr-[15px] rounded-br-[15px] flex justify-center items-center border-[#bc3232] text-[#bc3232]  hover:bg-[#bc3232]  hover:text-[#fed700]' onClick={searchproduct}><IoMdSearch /></button>
           </div>
-          <div className='user flex mr-[50px] mt-3'>
-            <div className='login-icon mt-[9px]'>
-              <FiLogIn />
-            </div>
-            <div className='btn '>
-              <button className='bg-[#bc3232] text-[#ffffff] rounded-md w-[60px] h-[35px]' onClick={()=>handleLogin()}>Login</button>
-            </div>
+          {
+          !isAuthenticated ? (<div className='user flex mr-[50px] mt-3'>
+          <div className='login-icon mt-[9px]'>
+            <FiLogIn />
           </div>
-          <div className='user flex mr-[50px] mt-3'>
-            <div className='login-icon mt-[9px]'>
-              <CgLogOut />
-            </div>
-            <div className='btn '>
-              <button className='bg-[#bc3232] text-[#ffffff] rounded-md w-[70px] h-[35px]'>Log Out</button>
-            </div>
+          <div className='btn '>
+            <button className='bg-[#bc3232] text-[#ffffff] rounded-md w-[60px] h-[35px]' onClick={()=>handleLogin()}>Login</button>
           </div>
+        </div>):(
+            <div className='user flex mr-[50px] mt-3'>
+          <div className='login-icon mt-[9px]'>
+            <CgLogOut />
+          </div>
+          <div className='btn '>
+            <button className='bg-[#bc3232] text-[#ffffff] rounded-md w-[70px] h-[35px]' onClick={handleLogOut}>Log Out</button>
+          </div>
+        </div>)
+          }
+          
+          
 
         </div>
         <div className='last-header flex justify-between items-center w-[100%] p-[10px] bg-[#bc3232] text-[white]'>
           <div className='userName flex'>
             <div className='usertag mt-[4.5px]'><FaUser /></div>
-            <h5 className='pl-[10px]'>Please Login</h5>
+            <h5 className='pl-[10px]'>{isAuthenticated?.email}</h5>
           </div>
           <div className='nav-li'> 
             <ul className='flex w-[500px] justify-between text-[18px]'>
@@ -64,7 +73,7 @@ const Nav = ({search,setSearch,searchproduct}) => {
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/shop") }}>Shop</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/cart") }}>Cart</li>
               <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/about") }}>About</li>
-              <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/contect") }}>Contect</li>
+              <li className='font-[600] cursor-pointer hover:text-[#fed700]' onClick={() => { navigate("/contect") }}>Contact</li>
             </ul>
           </div>
           <div >

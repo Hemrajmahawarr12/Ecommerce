@@ -2,25 +2,31 @@ import { Input } from "@mui/material";
 import { createSlice } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 
-// console.log("hemraj")
-
 const FavSlice = createSlice({
     name: "fav",
     initialState: {
-        login: '',
-        Ragister :'',
+        cart: [],
+        ragister:[],
+        favouritestate:[]
     },
     reducers: {
-        login(state, action) {
-            // console.log(action.payload);
-            state.login = action.payload;
-           
-        },Ragister(state, action) {
-            // console.log(state,action)
+        logindata(state, action) {  
+            state.ragister=action.payload
+            sessionStorage.setItem('HemrajMahawar', JSON.stringify(action.payload))
+            
+        },
+        cart(state, action) {
+            state.cart = action.payload;
+
+        },
+        favourite(state,action){
+            console.log(action.payload);
+            state.favouritestate = action.payload;
         }
+        
     }
 });
 
 
 export default FavSlice.reducer;
-export const {login,Ragister} = FavSlice.actions;
+export const { cart, logindata,favourite} = FavSlice.actions;
